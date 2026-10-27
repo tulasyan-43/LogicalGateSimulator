@@ -1,0 +1,14 @@
+# Compiled programs
+*.exe
+*.o
+*.obj
+
+# Debug files
+*.pdb
+
+# VS Code workspace settings
+.vscode/
+
+# Operating system files
+.DS_Store
+Thumbs.db

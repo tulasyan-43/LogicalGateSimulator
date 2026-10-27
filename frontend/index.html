@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LogicLab | Logical Gate Simulator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="app-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-icon">L</div>
+          <div>
+            <h2>LogicLab</h2>
+            <p>Digital Logic Studio</p>
+          </div>
+        </div>
+
+        <p class="menu-heading">MAIN MENU</p>
+
+        <nav>
+          <button class="nav-button active" data-page="dashboard">
+            <span>⌂</span> Dashboard
+          </button>
+
+          <button class="nav-button" data-page="gates">
+            <span>⚡</span> Logic Gate Simulator
+          </button>
+
+          <button class="nav-button" data-page="truth-table">
+            <span>▦</span> Truth Table Generator
+          </button>
+
+          <button class="nav-button" data-page="evaluator">
+            <span>ƒ</span> Expression Evaluator
+          </button>
+
+          <button class="nav-button" data-page="simplifier">
+            <span>✳</span> Boolean Simplifier
+          </button>
+
+          <button class="nav-button" data-page="equivalence">
+            <span>⇄</span> Equivalence Checker
+          </button>
+
+          <button class="nav-button" data-page="laws">
+            <span>▤</span> Boolean Algebra Laws
+          </button>
+
+          <button class="nav-button" data-page="history">
+            <span>◷</span> History
+          </button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="status-dot"></div>
+          <div>
+            <strong>Logic Engine</strong>
+            <p>Desktop Project</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="breadcrumb">WORKSPACE / DASHBOARD</p>
+            <h1>Logical Gate Simulator</h1>
+          </div>
+
+          <div class="profile-badge">LL</div>
+        </header>
+
+        <!-- Dashboard Page -->
+        <section id="dashboard" class="page">
+          <div class="welcome-banner">
+            <div>
+              <p class="eyebrow">WELCOME TO LOGICLAB</p>
+              <h2>Explore the world of<br />digital logic.</h2>
+              <p class="welcome-description">
+                Simulate logic gates, generate truth tables, and simplify Boolean
+                expressions in one place.
+              </p>
+              <button class="primary-button" data-open="gates">
+                Explore Logic Gates →
+              </button>
+            </div>
+
+            <div class="welcome-art">
+              <div class="circuit-circle">A · B</div>
+              <div class="circuit-line"></div>
+              <div class="circuit-output">Y</div>
+            </div>
+          </div>
+
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">YOUR TOOLKIT</p>
+              <h2>Explore the workspace</h2>
+            </div>
+            <span class="tool-count">6 TOOLS</span>
+          </div>
+
+          <div class="tool-grid">
+            <button class="tool-card card-purple" data-open="gates">
+              <div class="tool-icon">⚡</div>
+              <span class="card-label">SIMULATION</span>
+              <h3>Logic Gates</h3>
+              <p>Test seven fundamental digital logic gates.</p>
+              <span class="card-arrow">Open tool →</span>
+            </button>
+
+            <button class="tool-card card-blue" data-open="truth-table">
+              <div class="tool-icon">▦</div>
+              <span class="card-label">ANALYSIS</span>
+              <h3>Truth Tables</h3>
+              <p>Generate output tables for Boolean expressions.</p>
+              <span class="card-arrow">Open tool →</span>
+            </button>
+
+            <button class="tool-card card-green" data-open="evaluator">
+              <div class="tool-icon">ƒ</div>
+              <span class="card-label">CALCULATION</span>
+              <h3>Expression Evaluator</h3>
+              <p>Evaluate Boolean expressions using input values.</p>
+              <span class="card-arrow">Open tool →</span>
+            </button>
+
+            <button class="tool-card card-peach" data-open="simplifier">
+              <div class="tool-icon">✳</div>
+              <span class="card-label">OPTIMIZATION</span>
+              <h3>Boolean Simplifier</h3>
+              <p>Find simpler equivalent Boolean expressions.</p>
+              <span class="card-arrow">Open tool →</span>
+            </button>
+
+            <button class="tool-card card-pink" data-open="equivalence">
+              <div class="tool-icon">⇄</div>
+              <span class="card-label">VERIFICATION</span>
+              <h3>Equivalence Checker</h3>
+              <p>Check whether two expressions are logically equivalent.</p>
+              <span class="card-arrow">Open tool →</span>
+            </button>
+
+            <button class="tool-card card-yellow" data-open="laws">
+              <div class="tool-icon">▤</div>
+              <span class="card-label">LEARN</span>
+              <h3>Boolean Algebra Laws</h3>
+              <p>Explore the rules behind Boolean simplification.</p>
+              <span class="card-arrow">Open tool →</span>
+            </button>
+          </div>
+
+          <footer class="page-footer">
+            LogicLab · Logical Gate Simulator & Boolean Algebra Simplifier
+          </footer>
+        </section>
+
+        <section id="gates" class="page" hidden>
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">DIGITAL LOGIC LAB</p>
+              <h2>Logic Gate Simulator</h2>
+            </div>
+            <span class="tool-count">7 LOGIC GATES</span>
+          </div>
+
+          <p class="page-description">
+            Select a gate, choose your inputs, and calculate the output.
+          </p>
+
+          <div class="gate-workspace">
+            <div class="gate-selector-panel">
+              <h3>Select Logic Gate</h3>
+              <p class="panel-description">Choose a gate to begin.</p>
+
+              <div class="gate-options">
+                <button class="gate-option active" data-gate="AND">AND</button>
+                <button class="gate-option" data-gate="OR">OR</button>
+                <button class="gate-option" data-gate="NOT">NOT</button>
+                <button class="gate-option" data-gate="NAND">NAND</button>
+                <button class="gate-option" data-gate="NOR">NOR</button>
+                <button class="gate-option" data-gate="XOR">XOR</button>
+                <button class="gate-option" data-gate="XNOR">XNOR</button>
+              </div>
+            </div>
+
+            <div class="gate-calculator">
+              <div class="calculator-heading">
+                <div>
+                  <p class="eyebrow">INPUT CONFIGURATION</p>
+                  <h3 id="selectedGateTitle">AND Gate</h3>
+                </div>
+                <div class="gate-symbol" id="gateSymbol">AND</div>
+              </div>
+
+              <div class="input-controls">
+                <div class="input-control">
+                  <label for="inputA">Input A</label>
+                  <select id="inputA">
+                    <option value="0">0 — OFF</option>
+                    <option value="1">1 — ON</option>
+                  </select>
+                </div>
+
+                <div class="input-control" id="inputBControl">
+                  <label for="inputB">Input B</label>
+                  <select id="inputB">
+                    <option value="0">0 — OFF</option>
+                    <option value="1">1 — ON</option>
+                  </select>
+                </div>
+              </div>
+
+              <button id="calculateGate" class="primary-button calculate-button">
+                Calculate Output →
+              </button>
+
+              <div class="result-panel" aria-live="polite">
+                <p class="eyebrow">OUTPUT RESULT</p>
+                <div class="result-value" id="gateResult">—</div>
+                <p id="gateExplanation">Choose inputs and calculate.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="truth-card">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">REFERENCE</p>
+                <h3>Truth Table</h3>
+              </div>
+            </div>
+
+            <div class="table-container">
+              <table>
+                <thead id="truthTableHead"></thead>
+                <tbody id="truthTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="truth-table" class="page" hidden>
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">BOOLEAN ANALYSIS</p>
+              <h2>Truth Table Generator</h2>
+            </div>
+            <span class="tool-count">AUTO GENERATION</span>
+          </div>
+
+          <p class="page-description">
+            Enter a Boolean expression to generate its complete truth table.
+          </p>
+
+          <div class="evaluator-card">
+            <label for="truthExpression">Boolean Expression</label>
+
+            <input
+              type="text"
+              id="truthExpression"
+              placeholder="Example: (A+B).C"
+              autocomplete="off"
+            />
+
+            <p class="syntax-help">
+              Use + for OR, . for AND, ' for NOT, and parentheses for grouping.
+              Implicit AND is also supported, so AB means A.B.
+            </p>
+
+            <button id="generateTruthTable" class="primary-button calculate-button">
+              Generate Truth Table →
+            </button>
+          </div>
+
+          <div class="truth-card">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">GENERATED RESULTS</p>
+                <h3>Your Truth Table</h3>
+              </div>
+              <span class="tool-count" id="truthRowCount">0 ROWS</span>
+            </div>
+
+            <p id="truthTableMessage" class="page-description">
+              Enter an expression and generate its truth table.
+            </p>
+
+            <div class="table-container">
+              <table>
+                <thead id="generatedTableHead"></thead>
+                <tbody id="generatedTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="evaluator" class="page" hidden>
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">BOOLEAN CALCULATOR</p>
+              <h2>Expression Evaluator</h2>
+            </div>
+            <span class="tool-count">LIVE EVALUATION</span>
+          </div>
+
+          <p class="page-description">
+            Enter a Boolean expression and assign values to its variables.
+          </p>
+
+          <div class="evaluator-card">
+            <label for="booleanExpression">Boolean Expression</label>
+
+            <input
+              type="text"
+              id="booleanExpression"
+              placeholder="Example: (A+B).C"
+              autocomplete="off"
+            />
+
+            <p class="syntax-help">
+              Use <strong>+</strong> for OR, <strong>.</strong> for AND,
+              <strong>'</strong> for NOT, and parentheses for grouping.
+            </p>
+
+            <div class="variable-heading">
+              <h3>Input Variables</h3>
+              <p>Choose 0 or 1 for each variable.</p>
+            </div>
+
+            <div id="variableControls" class="variable-controls">
+              <p class="empty-variable-message">
+                Enter an expression to detect its variables.
+              </p>
+            </div>
+
+            <button id="evaluateExpression" class="primary-button calculate-button">
+              Evaluate Expression →
+            </button>
+
+            <div class="result-panel" aria-live="polite">
+              <p class="eyebrow">EVALUATION RESULT</p>
+              <div id="expressionResult" class="result-value">—</div>
+              <p id="expressionExplanation">
+                Enter an expression to get started.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="simplifier" class="page" hidden>
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">BOOLEAN OPTIMIZATION</p>
+              <h2>Boolean Expression Simplifier</h2>
+            </div>
+            <span class="tool-count">SMART SIMPLIFICATION</span>
+          </div>
+
+          <p class="page-description">
+            Simplify Boolean expressions using fundamental Boolean algebra laws.
+          </p>
+
+          <div class="evaluator-card">
+            <label for="simplifyExpression">Enter Boolean Expression</label>
+
+            <input
+              type="text"
+              id="simplifyExpression"
+              placeholder="Example: A+A"
+              autocomplete="off"
+            />
+
+            <p class="syntax-help">
+              Operators: + for OR, . for AND, ' for NOT. Parentheses are
+              supported.
+            </p>
+
+            <button id="simplifyButton" class="primary-button calculate-button">
+              Simplify Expression →
+            </button>
+
+            <div class="result-panel">
+              <p class="eyebrow">SIMPLIFIED EXPRESSION</p>
+              <div id="simplifiedResult" class="result-value">—</div>
+              <p id="simplifyExplanation">
+                Enter an expression to begin simplification.
+              </p>
+            </div>
+          </div>
+
+          <div class="truth-card">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">REFERENCE GUIDE</p>
+                <h3>Boolean Algebra Laws</h3>
+              </div>
+            </div>
+
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Law</th>
+                    <th>Expression</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>Identity</td>
+                    <td>A + 0</td>
+                    <td>A</td>
+                  </tr>
+                  <tr>
+                    <td>Idempotent</td>
+                    <td>A + A</td>
+                    <td>A</td>
+                  </tr>
+                  <tr>
+                    <td>Complement</td>
+                    <td>A + A'</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Absorption</td>
+                    <td>A + A.B</td>
+                    <td>A</td>
+                  </tr>
+                  <tr>
+                    <td>De Morgan</td>
+                    <td>(A.B)'</td>
+                    <td>A' + B'</td>
+                  </tr>
+                  <tr>
+                    <td>Null</td>
+                    <td>A . 0</td>
+                    <td>0</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- EQUIVALENCE CHECKER PAGE -->
+        <section id="equivalence" class="page" hidden>
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">LOGICAL COMPARISON</p>
+              <h2>Boolean Equivalence Checker</h2>
+            </div>
+
+            <span class="tool-count">EXPRESSION ANALYZER</span>
+          </div>
+
+          <p class="page-description">
+            Compare two Boolean expressions and check whether they produce
+            identical outputs for every possible combination of inputs.
+          </p>
+
+          <div class="evaluator-card">
+            <!-- FIRST EXPRESSION -->
+            <div class="equivalence-input-group">
+              <label for="expressionOne">Expression 1</label>
+
+              <input
+                type="text"
+                id="expressionOne"
+                placeholder="Example: A+B"
+                autocomplete="off"
+              />
+            </div>
+
+            <!-- SECOND EXPRESSION -->
+            <div class="equivalence-input-group">
+              <label for="expressionTwo">Expression 2</label>
+
+              <input
+                type="text"
+                id="expressionTwo"
+                placeholder="Example: B+A"
+                autocomplete="off"
+              />
+            </div>
+
+            <p class="syntax-help">
+              Use + for OR, . for AND, and ' for NOT. Parentheses are supported.
+              For example: A+B, A.B, A'.
+            </p>
+
+            <!-- CHECK BUTTON -->
+            <button
+              type="button"
+              id="checkEquivalenceButton"
+              class="primary-button calculate-button"
+            >
+              Check Equivalence →
+            </button>
+
+            <!-- RESULT -->
+            <div class="result-panel">
+              <p class="eyebrow">COMPARISON RESULT</p>
+
+              <div
+                id="equivalenceResult"
+                class="result-value"
+                aria-live="polite"
+              >
+                —
+              </div>
+
+              <p id="equivalenceExplanation">
+                Enter two expressions to compare them.
+              </p>
+            </div>
+          </div>
+
+          <!-- COMPARISON TABLE -->
+          <div class="truth-card">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">DETAILED ANALYSIS</p>
+                <h3>Truth Table Comparison</h3>
+              </div>
+            </div>
+
+            <p class="page-description">
+              The table will display the output of both expressions for every
+              possible input combination.
+            </p>
+
+            <div class="table-container">
+              <table id="equivalenceTable">
+                <thead>
+                  <tr>
+                    <th>Inputs</th>
+                    <th>Expression 1</th>
+                    <th>Expression 2</th>
+                    <th>Match?</th>
+                  </tr>
+                </thead>
+
+                <tbody id="equivalenceTableBody">
+                  <tr>
+                    <td colspan="4">
+                      Enter two expressions to generate the comparison table.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="laws" class="page" hidden>
+          <!-- PAGE HEADING -->
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">LEARN BOOLEAN ALGEBRA</p>
+              <h2>Boolean Algebra Laws</h2>
+            </div>
+
+            <span class="tool-count">10 FUNDAMENTAL LAWS</span>
+          </div>
+
+          <p class="page-description">
+            Explore the fundamental laws of Boolean algebra used to simplify
+            logical expressions and design digital circuits.
+          </p>
+
+          <!-- NOTATION GUIDE -->
+          <div class="truth-card">
+            <h3>Operator Notation</h3>
+
+            <div class="law-notation-grid">
+              <div class="law-notation-item">
+                <span class="law-symbol">+</span>
+                <span>OR operation</span>
+              </div>
+
+              <div class="law-notation-item">
+                <span class="law-symbol">.</span>
+                <span>AND operation</span>
+              </div>
+
+              <div class="law-notation-item">
+                <span class="law-symbol">' </span>
+                <span>NOT operation</span>
+              </div>
+
+              <div class="law-notation-item">
+                <span class="law-symbol">0 / 1</span>
+                <span>False / True</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- LAWS GRID -->
+          <div class="laws-grid">
+            <!-- LAW 1 -->
+            <article class="law-card">
+              <span class="law-number">LAW 01</span>
+              <h3>Identity Law</h3>
+
+              <div class="law-formula">
+                A + 0 = A<br />
+                A . 1 = A
+              </div>
+
+              <p>
+                OR with 0 and AND with 1 leave the original variable unchanged.
+              </p>
+
+              <div class="law-example">
+                <strong>Example</strong>
+                <span>B + 0 = B</span>
+              </div>
+            </article>
+
+            <!-- LAW 2 -->
+            <article class="law-card">
+              <span class="law-number">LAW 02</span>
+              <h3>Null / Domination Law</h3>
+
+              <div class="law-formula">
+                A + 1 = 1<br />
+                A . 0 = 0
+              </div>
+
+              <p>
+                OR with 1 always gives 1, while AND with 0 always gives 0.
+              </p>
+
+              <div class="law-example">
+                <strong>Example</strong>
+                <span>B . 0 = 0</span>
+              </div>
+            </article>
+
+            <!-- LAW 3 -->
+            <article class="law-card">
+              <span class="law-number">LAW 03</span>
+              <h3>Idempotent Law</h3>
+
+              <div class="law-formula">
+                A + A = A<br />
+                A . A = A
+              </div>
+
+              <p>
+                Applying the same variable twice produces the same variable.
+              </p>
+
+              <div class="law-example">
+                <strong>Example</strong>
+                <span>B + B = B</span>
+              </div>
+            </article>
+
+            <!-- LAW 4 -->
+            <article class="law-card">
+              <span class="law-number">LAW 04</span>
+              <h3>Complement Law</h3>
+
+              <div class="law-formula">
+                A + A' = 1<br />
+                A . A' = 0
+              </div>
+
+              <p>
+                A variable ORed with its complement gives 1; ANDing them gives 0.
+              </p>
+
+              <div class="law-example">
+                <strong>Example</strong>
+                <span>B + B' = 1</span>
+              </div>
+            </article>
+
+            <!-- LAW 5 -->
+            <article class="law-card">
+              <span class="law-number">LAW 05</span>
+              <h3>Involution Law</h3>
+
+              <div class="law-formula">(A')' = A</div>
+
+              <p>
+                Taking the complement twice returns the original variable.
+              </p>
+
+              <div class="law-example">
+                <strong>Example</strong>
+                <span>((B')') = B</span>
+              </div>
+            </article>
+
+            <!-- LAW 6 -->
+            <article class="law-card">
+              <span class="law-number">LAW 06</span>
+              <h3>Commutative Law</h3>
+
+              <div class="law-formula">
+                A + B = B + A<br />
+                A . B = B . A
+              </div>
+
+              <p>
+                Changing the order of variables does not change the result.
+              </p>
+
+              <div class="law-example">
+                <strong>Example</strong>
+                <span>A + B = B + A</span>
+              </div>
+            </article>
+
+            <!-- LAW 7 -->
+            <article class="law-card">
+              <span class="law-number">LAW 07</span>
+              <h3>Associative Law</h3>
+
+              <div class="law-formula">
+                (A + B) + C = A + (B + C)<br /><br />
+                (A . B) . C = A . (B . C)
+              </div>
+
+              <p>
+                Changing the grouping of the same operation does not affect the
+                result.
+              </p>
+
+              <div class="law-example">
+                <strong>Example</strong>
+                <span>(A + B) + C = A + (B + C)</span>
+              </div>
+            </article>
+
+            <!-- LAW 8 -->
+            <article class="law-card">
+              <span class="law-number">LAW 08</span>
+              <h3>Distributive Law</h3>
+
+              <div class="law-formula">
+                A . (B + C) = A.B + A.C<br /><br />
+                A + (B.C) = (A+B).(A+C)
+              </div>
+
+              <p>
+                An operation can be distributed over another using Boolean
+                algebra rules.
+              </p>
+
+              <div class="law-example">
+                <strong>Example</strong>
+                <span>A.(B+C) = A.B + A.C</span>
+              </div>
+            </article>
+
+            <!-- LAW 9 -->
+            <article class="law-card">
+              <span class="law-number">LAW 09</span>
+              <h3>Absorption Law</h3>
+
+              <div class="law-formula">
+                A + A.B = A<br />
+                A . (A+B) = A
+              </div>
+
+              <p>
+                A larger expression can be reduced to the absorbing variable.
+              </p>
+
+              <div class="law-example">
+                <strong>Example</strong>
+                <span>A + A.B = A</span>
+              </div>
+            </article>
+
+            <!-- LAW 10 -->
+            <article class="law-card">
+              <span class="law-number">LAW 10</span>
+              <h3>De Morgan's Laws</h3>
+
+              <div class="law-formula">
+                (A.B)' = A' + B'<br /><br />
+                (A+B)' = A'.B'
+              </div>
+
+              <p>
+                Complementing an expression changes AND to OR, or OR to AND,
+                while complementing each variable.
+              </p>
+
+              <div class="law-example">
+                <strong>Example</strong>
+                <span>(A.B)' = A' + B'</span>
+              </div>
+            </article>
+          </div>
+
+          <!-- QUICK REVISION -->
+          <div class="truth-card law-revision-card">
+            <p class="eyebrow">QUICK REVISION</p>
+
+            <h3>Remember These Three Rules</h3>
+
+            <ul class="law-revision-list">
+              <li><strong>Identity:</strong> A + 0 = A</li>
+              <li><strong>Complement:</strong> A + A' = 1</li>
+              <li><strong>De Morgan:</strong> (A+B)' = A'.B'</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- CALCULATION HISTORY PAGE -->
+        <section id="history" class="page" hidden>
+          <!-- PAGE HEADER -->
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">YOUR ACTIVITY</p>
+              <h2>Calculation History</h2>
+            </div>
+
+            <span class="tool-count" id="historyCount">0 CALCULATIONS</span>
+          </div>
+
+          <p class="page-description">
+            Review your previous Boolean calculations and revisit your results
+            whenever you need them.
+          </p>
+
+          <!-- HISTORY CONTROLS -->
+          <div class="history-toolbar">
+            <div class="history-search-box">
+              <label for="historySearch">Search History</label>
+
+              <input
+                type="text"
+                id="historySearch"
+                placeholder="Search expressions or results..."
+                autocomplete="off"
+              />
+            </div>
+
+            <button
+              type="button"
+              id="refreshHistoryButton"
+              class="secondary-button"
+            >
+              ↻ Refresh
+            </button>
+
+            <button
+              type="button"
+              id="clearHistoryButton"
+              class="danger-button"
+            >
+              🗑 Clear History
+            </button>
+          </div>
+
+          <!-- HISTORY LIST -->
+          <div class="truth-card history-card">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">RECENT ACTIVITY</p>
+                <h3>Your Calculations</h3>
+              </div>
+            </div>
+
+            <div id="historyList" class="history-list">
+              <div class="history-empty">
+                <div class="history-empty-icon">🧮</div>
+
+                <h3>No calculations yet</h3>
+
+                <p>
+                  Your calculations will appear here when you use the Logic Gate
+                  Simulator, Expression Evaluator, Simplifier, or Equivalence
+                  Checker.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
